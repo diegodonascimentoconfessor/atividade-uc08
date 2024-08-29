@@ -7,31 +7,35 @@ export const list: Product[] = [
         image: "https://www.sadia.com.br/assets/images/_/products/dca974f6f4be28deeda644c8ddc617e76c52bcf1.webp",
         name: "Mandioca Aipim Macaxeira",
         price: 20.00,
+        link: ,
     },
     {
         id: 2,
         image: "https://www.sadia.com.br/assets/images/_/products/d9dd0eec5efa6eae92104939a17ff3ecebfd2f4b.webp",
         name: "Nuggets de Legumes Sadia Veg&Tal",
-        price: 13.90
+        price: 13.90,
+        link: ,
     },
     {
         id: 3,
         image: "https://acdn.mitiendanube.com/stores/001/323/634/products/spavegano_sabliq_barra_geldental_amorahibisco_deslavanda__physalis1-bc2c62a04e86ff488316281934513376-640-0.webp",
         name: "kit limpeza",
         price: 11.00,
+        link: ,
     },
     {
         id: 4,
         image: "https://m.media-amazon.com/images/I/61DBEfRwb4L._AC_SX679_.jpg",
         name: "Sora Carne Moída Vegetal Multigrãos Vegano 200G",
         price: 16.00,
+        link: ,
     },
     {
         id: 5,
         image: "https://m.media-amazon.com/images/I/71-EXUnxEXL.__AC_SX300_SY300_QL70_ML2_.jpg",
         name: "Konjac Massa MF Macarrão Espaguete Zero Carboidrato",
         price: 18.89,
-
+        Link: ,
     },
 
     {
