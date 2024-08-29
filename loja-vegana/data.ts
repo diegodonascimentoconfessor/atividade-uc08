@@ -17,7 +17,7 @@ export const list: Product[] = [
     {
         id: 3,
         image: "https://acdn.mitiendanube.com/stores/001/323/634/products/spavegano_sabliq_barra_geldental_amorahibisco_deslavanda__physalis1-bc2c62a04e86ff488316281934513376-640-0.webp",
-        name: "Nuggets Legumes",
+        name: "kit limpeza",
         price: 11.00,
     },
     {
