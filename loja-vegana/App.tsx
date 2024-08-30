@@ -1,12 +1,30 @@
-import { SafeAreaView, StyleSheet, StatusBar, Image, Text, View, FlatList } from 'react-native';
+import { SafeAreaView, StyleSheet, StatusBar, Image, Text, View, FlatList,Button } from 'react-native';
 import { list } from './data';
 import { ProductItem } from './componets/produtc-Item';
 import { Product } from './types/Product';
+import { useState } from 'react';
+
+
+
+
 
 export default function App() {
+  const [areaShow, setAreaShow] = useState(false);
+
+  const mostrar = () => {
+   setAreaShow(!areaShow)
+  };
+
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
+      <Button title='Apareça / desapareça' onPress={mostrar}/>
+      {areaShow === true && <View style={styles.area}>
+        <Text style={styles.areaTXT}>Area Secreta</Text>
+      </View> }
+
+
       <Image 
         source={require('./assets/lojav.jpg')}
         resizeMode='cover'
@@ -40,4 +58,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: 10,
   },
+
+  areaTXT:{
+    
+  }
 });
