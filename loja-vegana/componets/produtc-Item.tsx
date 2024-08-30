@@ -1,33 +1,38 @@
-import { View, StyleSheet, Image, Text, Button, Linking } from "react-native";
-import { Product } from "../types/Product";
+import React from 'react';
+import { View, StyleSheet, Image, Text, Button, Linking, TouchableOpacity } from 'react-native';
+import { Product } from '../types/Product';
 
 type Props = {
   product: Product;
 };
 
 export const ProductItem = (props: Props) => {
-  const cesta = () => {
-    // URL do WhatsApp com uma mensagem pré-preenchida
-    const url = "https://wa.me/?text=Estou%20interessado%20no%20produto%20${encodeURIComponent(props.product.name)}";
-    
-    // Abrindo o WhatsApp usando o Linking
-    Linking.openURL(url).catch(err => {
-      console.error("Failed to open URL:", err);
-      alert("Não foi possível acessar o link");
-    });
+  const openLink = () => {
+    const url = props.product.link;
+
+    // Verificar se o link é válido antes de tentar abri-lo
+    if (url && url.startsWith('http')) {
+      Linking.openURL(url).catch(err => {
+        console.error('Failed to open URL:', err);
+        alert('Não foi possível acessar o link');
+      });
+    } else {
+      alert('Link inválido');
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Image
-        // Chamando imagem remota
-        source={{ uri: props.product.image }}
-        style={styles.image}
-      />
+      <TouchableOpacity onPress={openLink}>
+        <Image
+          source={{ uri: props.product.image }}
+          style={styles.image}
+        />
+      </TouchableOpacity>
       <View style={styles.info}>
         <Text style={styles.name}>{props.product.name}</Text>
         <Text style={styles.price}>R$ {props.product.price.toFixed(2)}</Text>
-        <Button title="Comprar" onPress={cesta} />
+        <Button title="Comprar" onPress={openLink} />
       </View>
     </View>
   );
@@ -35,26 +40,36 @@ export const ProductItem = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginBottom: 10,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 2,
   },
   image: {
     width: 100,
     height: 100,
+    borderRadius: 8,
   },
   info: {
     flex: 1,
-    marginLeft: 20,
+    marginLeft: 15,
+    justifyContent: 'center',
   },
   name: {
-    fontSize: 14,
-    fontWeight: "bold",
-    marginBottom: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 5,
   },
   price: {
-    color: "red",
-    fontSize: 16,
+    color: 'red',
+    fontSize: 18,
     marginBottom: 10,
-    
   },
 });
