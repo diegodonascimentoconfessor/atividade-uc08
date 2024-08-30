@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, Text, Button, Linking, } from "react-native";
+import { View, StyleSheet, Image, Text, Button, Linking } from "react-native";
 import { Product } from "../types/Product";
 
 type Props = {
@@ -7,10 +7,10 @@ type Props = {
 
 export const ProductItem = (props: Props) => {
   const cesta = () => {
-    // URL do site do produto
-    const url = props.product.link;
+    // URL do WhatsApp com uma mensagem pré-preenchida
+    const url = "https://wa.me/?text=Estou%20interessado%20no%20produto%20${encodeURIComponent(props.product.name)}";
     
-    // Abrindo a URL usando o Linking
+    // Abrindo o WhatsApp usando o Linking
     Linking.openURL(url).catch(err => {
       console.error("Failed to open URL:", err);
       alert("Não foi possível acessar o link");
@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
     color: "red",
     fontSize: 16,
     marginBottom: 10,
+    
   },
 });
-
