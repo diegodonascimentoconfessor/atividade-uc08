@@ -10,7 +10,6 @@ export const ProductItem = (props: Props) => {
   const openLink = () => {
     const url = props.product.link;
 
-    // Verificar se o link é válido antes de tentar abri-lo
     if (url && url.startsWith('http')) {
       Linking.openURL(url).catch(err => {
         console.error('Failed to open URL:', err);
