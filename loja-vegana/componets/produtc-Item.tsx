@@ -4,6 +4,7 @@ import { Product } from '../types/Product';
 
 type Props = {
   product: Product;
+  mostrarPreco: boolean; // Nova prop para controlar a visibilidade do preço
 };
 
 export const ProductItem = (props: Props) => {
@@ -30,7 +31,9 @@ export const ProductItem = (props: Props) => {
       </TouchableOpacity>
       <View style={styles.info}>
         <Text style={styles.name}>{props.product.name}</Text>
-        <Text style={styles.price}>R$ {props.product.price.toFixed(2)}</Text>
+        {props.mostrarPreco && ( // Renderiza o preço apenas se mostrarPreco for true
+          <Text style={styles.price}>R$ {props.product.price.toFixed(2)}</Text>
+        )}
         <Button title="Comprar" onPress={openLink} />
       </View>
     </View>
