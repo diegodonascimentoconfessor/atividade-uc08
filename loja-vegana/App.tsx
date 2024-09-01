@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, StatusBar, Image, Text, View, FlatList, Button } from 'react-native';
+import { SafeAreaView, StyleSheet, StatusBar, Image, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { list } from './data';
 import { ProductItem } from './componets/produtc-Item';
 import { Product } from './types/Product';
@@ -6,20 +6,22 @@ import { useState } from 'react';
 
 export default function App() {
   const [areaShow, setAreaShow] = useState(false);
-  const [precoShow, setPrecoShow] = useState(false); 
+  const [precoShow, setPrecoShow] = useState(false);
 
   const mostrar = () => {
     setAreaShow(!areaShow);
   };
 
   const mostrarPrecos = () => {
-    setPrecoShow(!precoShow); 
+    setPrecoShow(!precoShow);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
-      <Button title='Apareça / desapareça' onPress={mostrar} />
+      <TouchableOpacity style={styles.botao} onPress={mostrar}>
+        <Text style={styles.botaoTexto}>Apareça / desapareça</Text>
+      </TouchableOpacity>
       {areaShow && (
         <View style={styles.area}>
           <Text style={styles.areaTXT}>Área Secreta</Text>
@@ -34,7 +36,9 @@ export default function App() {
 
       <View style={styles.area}>
         <Text style={styles.h1}>Produtos</Text>
-        <Button title='Mostrar/Esconder Preços' onPress={mostrarPrecos} />
+        <TouchableOpacity style={styles.botao} onPress={mostrarPrecos}>
+          <Text style={styles.botaoTexto}>Mostrar/Esconder Preços</Text>
+        </TouchableOpacity>
         <FlatList
           data={list}
           renderItem={({ item }: { item: Product }) => (
@@ -65,5 +69,17 @@ const styles = StyleSheet.create({
   },
   areaTXT: {
     // Estilos para a área secreta
+  },
+  botao: {
+    backgroundColor: '#007BFF',
+    padding: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  botaoTexto: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
